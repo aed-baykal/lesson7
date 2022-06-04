@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/common-head">
+</head>
+<body class="content">
+<div class="container">
+    <h1>Список студентов</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>Имя</td>
+            <td>Возраст</td>
+            <td>Удалить</td>
+            <td>Обновить</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}">1</td>
+            <td th:text="${student.name}">Экран</td>
+            <td th:text="${student.age}">999</td>
+            <td>
+                <form method="post" th:action="@{${'/delete/' + student.id}}">
+                    <button type="submit" class="btn btn-danger">x</button>
+                </form>
+            </td>
+            <td>
+                <form method="get" th:action="@{${'/update/' + student.id}}">
+                    <button type="submit" class="btn btn-primary">Обновить</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{'/add'}" class="btn btn-primary">Добавить</a>
+</div>
+</body>
+</html>

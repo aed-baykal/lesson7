@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/common-head">
+</head>
+<body class="content">
+<div class="container">
+    <h1>Форма добавления студента</h1>
+    <div class="row">
+        <form method="post" th:action="@{/add}" class="col-md-6" th:object="${studentDto}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}">
+                <br>
+                <div th:each="err : ${#fields.errors('name')}" th:text="${err}" class="alert alert-danger">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="score" class="form-label">Возраст</label>
+                <input type="number" class="form-control" id="score" th:field="*{age}">
+                <br>
+                <div th:each="err : ${#fields.errors('age')}" th:text="${err}" class="alert alert-danger">
+                </div>
+            </div>
+            <a th:href="@{'/'}" class="btn btn-secondary">Отмена</a>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

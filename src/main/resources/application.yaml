@@ -1,0 +1,11 @@
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:file:/home/andrey/IntellijWorkPlace/lesson7/src/main/resources/db/market-db;MODE=PostgreSQL
+        username: admin
+        password: admin
+    jpa:
+        show-sql: true
+    h2:
+        console:
+            enabled: true
